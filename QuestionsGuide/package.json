@@ -1,0 +1,15 @@
+{
+  "name": "questionsguide",
+  "version": "1.0.0",
+  "description": "Questions and answers app using the Yahooo Answers style",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "JOCS",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.7.1",
+    "express": "^4.17.1"
+  }
+}

@@ -1,0 +1,26 @@
+<!-- header (partials) -->
+<%- include partials/header.ejs %>
+<body>
+    <!-- navbar (partials) -->
+    <%- include partials/navbar.ejs %>
+    <div class="container">
+        <div class="card" id="form-question">
+            <div class="card-header">
+                <h3>Making a question</h3>        
+            </div>
+            <div class="card-body">
+                <form>
+                    <label>Title</label>
+                    <input type="text" placeholder="Title" class="form-control">
+                    <label>Description</label>
+                    <textarea placeholder="Describe the question here" class="form-control"></textarea>
+                    <br> <button class="btn btn-primary">Send</button>
+                </form>
+            </div>
+        </div>
+        <hr>
+    </div>
+ </body>
+
+<!-- footer (partials) -->
+<%- include partials/footer.ejs %>

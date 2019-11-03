@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Questions Guide</title>
+    <link rel="stylesheet" href="/css/style.css">       <!-- 'public' not necessary for Express -->
+</head>
+<body>
+    <h1>Questions Guide</h1>
+    <hr>
+    <h3>Questions list</h3>
+    <!-- show variables values -->
+    <p>User name: <%= username %></p>     
+    <p>Language: <%= lang %></p>
+    <p>Company: <%= company %></p>
+    <p>Signatures: <%= signatures %></p>
+    <% if(msg){ %>
+        <h3>It's an error message</h3>
+    <%} else { %>
+        <h3>It's an OK for the message</h3>
+    <%} %>
+
+    <img src='/img/Statler_and_Waldorf.jpg'> 
+
+    <% products.forEach(function(product) { %>
+        <hr>
+        <h4><%= product.nameprod %></h4>
+        <h4><%= product.price %></h4>
+    <%}) %>
+
+</body>
+</html>
