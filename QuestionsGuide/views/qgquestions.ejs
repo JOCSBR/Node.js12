@@ -3,17 +3,17 @@
 <body>
     <!-- navbar (partials) -->
     <%- include partials/navbar.ejs %>
-    <div class="container">
+    <div class="container">         <!-- class container of boostrap -->
         <div class="card" id="form-question">
             <div class="card-header">
                 <h3>Making a question</h3>        
             </div>
             <div class="card-body">
-                <form>
+                <form method="POST" action="/savequestions">
                     <label>Title</label>
-                    <input type="text" placeholder="Title" class="form-control">
+                    <input type="text" placeholder="Title" class="form-control" name="Title">
                     <label>Description</label>
-                    <textarea placeholder="Describe the question here" class="form-control"></textarea>
+                    <textarea placeholder="Describe the question here" class="form-control" name="Descrip"></textarea> 
                     <br> <button class="btn btn-primary">Send</button>
                 </form>
             </div>
