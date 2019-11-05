@@ -1,0 +1,12 @@
+<%- include partials/header.ejs %>
+<body>
+    <%- include partials/navbar.ejs %>
+    <!-- <h1>Boostratp style</h1> -->
+    <div class="container">
+        <hr>
+        <h1><%= question.title %></h1>      <!-- takes the 'title' from db column field -->
+        <p>><%= question.description %></p>
+        <hr>
+    </div>
+</body>
+<%- include partials/footer.ejs %>

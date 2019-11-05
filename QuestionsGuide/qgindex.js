@@ -27,7 +27,9 @@ app.use(bodyParser.json());         // read form data via json (optional, used f
 
 // roots definition
 app.get("/", (req,res) => {
-    Questions.findAll({raw: true}).then(questions => {      // equiv to select *,  fill a 'questions' var with db data as array
+    Questions.findAll({raw: true, order: [
+        ['id','DESC']
+    ]}).then(questions => {      // Sequelize - equiv to select *,  fill a 'questions' var with db data as array
         // console.log(questions);
         res.render("qgindex.ejs", {
             questions: questions                            // var receives db data from other var - continues to be an array
@@ -52,7 +54,24 @@ app.post("/savequestions", (req,res) => {   // post sends form to backend
     });
 });
 
+app.get("/question/:id", (req,res) => {
+    var id = req.params.id;
+    Questions.findOne({         // model search on db
+        where: {id: id}
+    }).then(question => {       // if OK, receives the variable (can be 'empty' if not found)
+        if(question != undefined){      // question found
+            res.render("pgquestion.ejs",{
+                question: question
+            });
+        }else{                          // question not found
+            res.redirect("/");
+        }
+    });
+    //res.render("qgquestions");
+});
 
+
+// port definition and alert about running
 app.listen(8081,()=> {
     console.log("App running!");
 });
