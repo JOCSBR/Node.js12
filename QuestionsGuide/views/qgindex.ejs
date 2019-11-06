@@ -1,21 +1,25 @@
+<!-- Initial page -->
+<!-- Lists all questions titles from database -->
+
+
 <%- include partials/header.ejs %>
 <body>
     <%- include partials/navbar.ejs %>
     <!-- <h1>Boostratp style</h1> -->
     <div class="container">
         <br><h1>Questions</h1><hr>
-        <br><a href="/questions" class="btn btn-primary">Make questions</a><br>
+        <br><a href="/questions" class="btn btn-primary">Make questions</a><br>     <!-- indicates the root -->
         <% questions.forEach(question => { %>
             <br>
             <div class="card">
                 <div class="card-body">
-                    <h3><%= question.title %></h3>
+                    <h3><%= question.title %></h3>      <!-- title from database -->
                 </div>
-                <div class="card-footer">   
-                    <button class="btn btn-primary">Response</button>
+                <div class="card-footer">
+                    <!-- retrieve the correspondent id from database ans indicates the root with the form to show -->
+                    <a href="/question/<%= question.id%> >"><button class="btn btn-primary">Response</button></a>
                 </div>
             </div>
-
         <% }) %>
     </div>
 </body>

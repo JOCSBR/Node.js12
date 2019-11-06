@@ -1,3 +1,6 @@
+<!-- Show Question page -->
+<!-- Form to show and answer a single question -->
+
 <%- include partials/header.ejs %>
 <body>
     <%- include partials/navbar.ejs %>
@@ -7,6 +10,25 @@
         <h1><%= question.title %></h1>      <!-- takes the 'title' from db column field -->
         <p>><%= question.description %></p>
         <hr>
+        <form method="POST" action="/savereplay">      <!-- indicates the root to the answers (/savereplay) -->
+            <h3>Please answer</h3>
+            <label>Answer:</label>
+            <textarea placeholder="Input the answer" class="form-control" name="descrAnswer"></textarea>
+            <br>
+            <input type="hidden" name="questionId" value="<%= question.id %>">      <!-- field hidden -->
+            <button type="submit" class="btn btn-primary">Send reply</button>
+        </form>
+        <hr>
+        <h3>Respostas</h3>
+        <hr>
+        <% answers.forEach(answer => {%>
+            <br>
+            <div class="card">
+                <div class="card-body">
+                    <p> <%= answer.descrAnswer %> </p>
+                </div>
+            </div>
+        <%})%>
     </div>
 </body>
 <%- include partials/footer.ejs %>
