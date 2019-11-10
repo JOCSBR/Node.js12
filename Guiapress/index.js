@@ -34,14 +34,14 @@ connection
         console.log(error);
     });
 
-// define roots on express
-// main root
+// define routes on express
+// main route
 app.get('/', (req,res) => {
     // res.send("Welcome to my website");
     res.render("index");                // renderize index.ejs
 });
 
-// use roots defined on controllers
+// use routes defined on controllers
 app.use("/", categoriesController);     // using "/" as prefix, can be any string phrase
 app.use("/", articlesController);
 

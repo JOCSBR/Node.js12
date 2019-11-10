@@ -1,0 +1,21 @@
+<!-- New article form -->
+
+<%- include ../../partials/header.ejs%>     <!-- up to levels to find Bootstrap on /views-->
+<%- include ../../partials/navbar.ejs%>
+
+<div class="container">
+    <hr>
+    <div class="card">
+        <div class="card-header">
+            <h2>Article register</h2>
+        </div>
+        <div class="card-body">
+            <form method="POST" action="/articles/save">
+                <input class="form-control" type="text" name="title" placeholder="Define article title"><br>
+                <button class="btn btn-success">Register</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include ../../partials/footer.ejs%>

@@ -1,0 +1,59 @@
+<!-- view to list and manipulate categories -->
+
+<%- include ../../partials/header.ejs%>     <!-- up to levels to find Bootstrap on /views-->
+<%- include ../../partials/navbar.ejs%>
+
+<div class="container">
+    <hr>
+    <h2>Categories</h2>
+    <a class="btn btn-success" href="/admin/categories/new">Create new Category</a>
+    <hr>
+    <table class="table table-bordered">           <!-- boostratp class -->
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Slug</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% categories.forEach(category => { %>
+                <tr>
+                    <th><%= category.id %></th>
+                    <th><%= category.title %></th>
+                    <th><%= category.slug %></th>
+                    <th>
+                        <!-- tip: the edit button call the id dynamically using EJS -->
+                        <a href="/admin/categories/edit/<%= category.id %>" class="btn btn-warning">Edit</a>
+                        <!-- tip: using form to facilitates the button action-->
+                        <!-- values sent to backend, using the parameters to delete the record -->
+                        <!-- obs: the variable 'this' on the HTML sent the own form-->
+                        <form method="POST" action="/categories/delete" style="display: inline;" onsubmit="confirmDeletion(event, this)">
+                            <input type="hidden" name='id' value="<%= category.id %>">   
+                            <button class="btn btn-danger">Delete</button>
+                        </form>
+                    </th>
+                </tr>
+            <% }) %>    
+        </tbody>
+    </table>
+</div>
+
+<%- include ../../partials/footer.ejs%>
+
+<!-- JavaScript scripts -->
+<!-- Requires confirmation from user to delete -->
+<script>
+    function confirmDeletion(event, form){      // form = to receive the form
+        event.preventDefault();         // default methos to prevent
+        // console.log("Form not sent");
+        var decision = confirm("Confirm Category deletion?");
+        if(decision){
+            console.log("Deletion YES");
+            form.submit();              // send the form from the Java Script
+        }else{
+            console.log("Deletion NO");
+        }
+    }
+</script>
