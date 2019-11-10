@@ -1,0 +1,19 @@
+<!-- Home navbar -->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">   <!-- expand used to maintain the titles in line -->
+    <a class="navbar-brand" href="/">
+        <img src="../../../img/JOCSDevelopment.png">
+    </a>
+    <ul class="navbar-nav mr-auto">             <!-- bootstrap classes -->
+        <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+        </li>
+        
+        <% categories.forEach(category => { %>
+            <li class="nav-item">
+                <!-- using the slug variable to access categories from the titles in the homenavbar --> 
+                <a class="nav-link" href="/category/<%= category.slug %>"><%= category.title %></a>
+            </li>
+        <% }); %>
+    </ul>
+</nav>

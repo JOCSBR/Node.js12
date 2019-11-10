@@ -1,4 +1,4 @@
-<!-- New article form -->
+<!-- New articles form -->
 
 <%- include ../../partials/header.ejs%>     <!-- up to levels to find Bootstrap on /views-->
 <%- include ../../partials/navbar.ejs%>
@@ -12,6 +12,14 @@
         <div class="card-body">
             <form method="POST" action="/articles/save">
                 <input class="form-control" type="text" name="title" placeholder="Define article title"><br>
+                <textarea class="form-control" name="body" id="article" placeholder="Write article here"></textarea><br>
+                <!-- using Category model passed to list categories (see controller) -->
+                <label>Categories</label>
+                <select name="category" class="form-control">   <!-- name used to acces in the backend -->
+                    <% categories.forEach((category) => { %>   <!-- used to list all categories from Model -->
+                        <option value="<%= category.id %>"><%= category.title %></option>   <!-- value used to get the id of select record on the list -->
+                    <% }) %>
+                </select><br>   
                 <button class="btn btn-success">Register</button>
             </form>
         </div>
@@ -19,3 +27,13 @@
 </div>
 
 <%- include ../../partials/footer.ejs%>
+
+<script src="/tinymce/tinymce.min.js"></script>          <!-- import TinyMCE script -->
+<script>
+    tinymce.init({
+        selector: "#article",
+        plugins: [
+            "advlist autolink link image lists print preview hr searchreplace wordcount fullscreen insertdatetime media save table paste emoticons"
+        ]
+    })
+</script>

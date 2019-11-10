@@ -1,0 +1,56 @@
+<!-- view to list and delete articles -->
+
+<%- include ../../partials/header.ejs%>     <!-- up to levels to find Bootstrap on /views-->
+<%- include ../../partials/navbar.ejs%>
+
+<div class="container">
+    <hr>
+    <h2>Articles</h2>
+    <a class="btn btn-success" href="/admin/articles/new">Create new Article</a>
+    <hr>
+    <table class="table table-bordered">           <!-- boostratp class -->
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Slug</th>
+                <th>Category</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+           <% articles.forEach(article => { %>
+                <tr>                                            <!-- necessário para renderizar em linhas separadas -->
+                    <td><%= article.id %></td>
+                    <td><%= article.title %></td>
+                    <td><%= article.slug %></td>
+                    <td><%= article.category.title %></td>     <!-- foreign key, using join to show the title -->
+                    <td>
+                        <form method="POST" action="/articles/delete" style="display: inline;" onsubmit="confirmDeletion(event, this)">
+                            <input type="hidden" name='id' value="<%= article.id %>">   
+                            <button class="btn btn-danger">Delete</button>
+                        </form>
+                    </td> 
+                </tr>
+           <% }) %>    
+        </tbody>
+    </table>
+</div>
+
+<%- include ../../partials/footer.ejs%>
+
+<!-- JavaScript scripts -->
+<!-- Requires confirmation from user to delete -->
+<script>
+    function confirmDeletion(event, form){      // form = to receive the form
+        event.preventDefault();         // default methos to prevent
+        // console.log("Form not sent");
+        var decision = confirm("Confirm Article deletion?");
+        if(decision){
+            console.log("Deletion YES");
+            form.submit();              // send the form from the Java Script
+        }else{
+            console.log("Deletion NO");
+        }
+    }
+</script>
